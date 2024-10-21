@@ -22,7 +22,7 @@ Renderer::Renderer(Window& parent): OGLRenderer(parent)
 
 Renderer::~Renderer()
 {
-    delete[] triangles;
+    for (Mesh* t : triangles) delete t;
     delete basicShader;
 }
 
