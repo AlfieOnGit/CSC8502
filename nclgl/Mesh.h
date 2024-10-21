@@ -83,7 +83,7 @@ public:
 	bool GetSubMesh(int i, const SubMesh* s) const;
 	bool GetSubMesh(const std::string& name, const SubMesh* s) const;
 
-	static Mesh* GenerateTriangle(Vector3 vertex1, Vector3 vertex2, Vector3 vertex3);
+	static Mesh* GenerateTriangle(Vector3 const &vertex1, Vector3 const &vertex2, Vector3 const &vertex3);
 
 protected:
 	void	BufferData();

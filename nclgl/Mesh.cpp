@@ -375,7 +375,7 @@ Mesh* Mesh::LoadFromMeshFile(const string& name) {
 	return mesh;
 }
 
-Mesh* Mesh::GenerateTriangle(Vector3 vertex1, Vector3 vertex2, Vector3 vertex3)
+Mesh* Mesh::GenerateTriangle(Vector3 const &vertex1, Vector3 const &vertex2, Vector3 const &vertex3)
 {
 	auto* m = new Mesh();
 	m->numVertices = 3;
