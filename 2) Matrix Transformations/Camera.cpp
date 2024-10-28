@@ -35,4 +35,3 @@ Matrix4 Camera::BuildViewMatrix()
     * Matrix4::Rotation(-yaw, Vector3(0, 1, 1))
     * Matrix4::Translation(-position);
 }
-

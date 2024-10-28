@@ -13,6 +13,8 @@ Renderer::Renderer(Window& parent): OGLRenderer(parent)
 
     init = true;
 
+    camera = new Camera();
+
     SwitchToOrthographic();
 }
 
@@ -51,6 +53,12 @@ void Renderer::RenderScene()
     }
 }
 
+void Renderer::UpdateScene(float dt)
+{
+    camera->UpdateCamera(dt);
+    viewMatrix = camera->BuildViewMatrix();
+}
+
 
 void Renderer::SwitchToPerspective()
 {
@@ -71,4 +79,3 @@ void Renderer::SwitchToOrthographic()
         height / 2.0f,
         -height / 2.0f);
 }
-

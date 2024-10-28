@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Camera.h"
 #include "NCLGL/OGLRenderer.h"
 
 class Renderer : public OGLRenderer
@@ -8,13 +9,14 @@ public:
     virtual ~Renderer();
 
     virtual void RenderScene();
+    virtual void UpdateScene(float dt);
 
     void SwitchToPerspective();
     void SwitchToOrthographic();
 
-    inline void SetScale(float s) { scale = s; }
-    inline void SetRotation(float r) { rotation = r; }
-    inline void SetPosition(Vector3 p) { position = p; }
+    void SetScale(float s) { scale = s; }
+    void SetRotation(float r) { rotation = r; }
+    void SetPosition(Vector3 p) { position = p; }
 
 protected:
     Mesh* triangle;
@@ -22,4 +24,5 @@ protected:
     float scale;
     float rotation;
     Vector3 position;
+    Camera* camera;
 };

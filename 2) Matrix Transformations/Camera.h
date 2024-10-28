@@ -18,13 +18,13 @@ public:
         this->position = position;
     }
 
-    ~Camera() {};
+    ~Camera() {}
 
     void UpdateCamera(float dt = 1.0f);
 
     Matrix4 BuildViewMatrix();
 
-    Vector3 GetPosition() const;
+    Vector3 GetPosition() const { return position; }
     void SetPosition(Vector3 val) { this->position = val; }
 
     float GetYaw() const { return yaw; }
