@@ -385,6 +385,11 @@ Mesh* Mesh::GenerateTriangle(Vector3 const &vertex1, Vector3 const &vertex2, Vec
 	m->vertices[1] = vertex2;
 	m->vertices[2] = vertex3;
 
+	m->textureCoords = new Vector2[m->numVertices];
+	m->textureCoords[0] = Vector2(0.5f, 0.0f);
+	m->textureCoords[1] = Vector2(1.0f, 1.0f);
+	m->textureCoords[2] = Vector2(0.0f, 1.0f);
+
 	m->colours = new Vector4[m->numVertices];
 	m->colours[0] = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
 	m->colours[1] = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
