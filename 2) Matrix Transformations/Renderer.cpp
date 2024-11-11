@@ -1,5 +1,7 @@
 ﻿#include "Renderer.h"
 
+#include "nclgl/Camera.h"
+
 Renderer::Renderer(Window& parent): OGLRenderer(parent)
 {
     triangle = Mesh::GenerateTriangle(
