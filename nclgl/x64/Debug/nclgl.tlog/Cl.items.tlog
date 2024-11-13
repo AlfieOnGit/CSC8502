@@ -1,6 +1,7 @@
 C:\Users\Alfie\RiderProjects\CSC8502\Third Party\glad\glad.c;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\glad.obj
 C:\Users\Alfie\RiderProjects\CSC8502\nclgl\Camera.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\Camera.obj
 C:\Users\Alfie\RiderProjects\CSC8502\nclgl\ComputeShader.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\ComputeShader.obj
+C:\Users\Alfie\RiderProjects\CSC8502\nclgl\Frustum.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\Frustum.obj
 C:\Users\Alfie\RiderProjects\CSC8502\nclgl\GameTimer.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\GameTimer.obj
 C:\Users\Alfie\RiderProjects\CSC8502\nclgl\Keyboard.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\Keyboard.obj
 C:\Users\Alfie\RiderProjects\CSC8502\nclgl\Matrix2.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\Matrix2.obj
@@ -11,6 +12,8 @@ C:\Users\Alfie\RiderProjects\CSC8502\nclgl\MeshAnimation.cpp;C:\Users\Alfie\Ride
 C:\Users\Alfie\RiderProjects\CSC8502\nclgl\MeshMaterial.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\MeshMaterial.obj
 C:\Users\Alfie\RiderProjects\CSC8502\nclgl\Mouse.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\Mouse.obj
 C:\Users\Alfie\RiderProjects\CSC8502\nclgl\OGLRenderer.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\OGLRenderer.obj
+C:\Users\Alfie\RiderProjects\CSC8502\nclgl\Plane.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\Plane.obj
 C:\Users\Alfie\RiderProjects\CSC8502\nclgl\Quaternion.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\Quaternion.obj
+C:\Users\Alfie\RiderProjects\CSC8502\nclgl\SceneNode.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\SceneNode.obj
 C:\Users\Alfie\RiderProjects\CSC8502\nclgl\Shader.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\Shader.obj
 C:\Users\Alfie\RiderProjects\CSC8502\nclgl\Window.cpp;C:\Users\Alfie\RiderProjects\CSC8502\nclgl\x64\Debug\Window.obj

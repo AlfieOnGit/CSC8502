@@ -1,5 +1,6 @@
 ﻿#pragma once
-#include "SceneNode.h"
+#include "nclgl/Mesh.h"
+#include "nclgl/SceneNode.h"
 
 class CubeRobot : public SceneNode
 {

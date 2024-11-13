@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "SceneNode.h"
 #include "nclgl/OGLRenderer.h"
 #include "nclgl/Camera.h"
+#include "nclgl/SceneNode.h"
 
 class Renderer : public OGLRenderer
 {
