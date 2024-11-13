@@ -86,6 +86,9 @@ public:
 	static Mesh* GenerateTriangle(Vector3 const &vertex1, Vector3 const &vertex2, Vector3 const &vertex3);
 	static Mesh* GenerateQuad();
 
+	void GenerateNormals();
+	bool GetVertexIndicesForTri(unsigned int i, unsigned int &a, unsigned int &b, unsigned int &c) const;
+
 protected:
 	void	BufferData();
 

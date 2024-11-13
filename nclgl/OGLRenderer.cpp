@@ -16,6 +16,8 @@ _-_-_-_-_-_-_-""  ""
 #include "Shader.h"
 #include <algorithm>
 
+#include "Light.h"
+
 using std::string;
 
 
@@ -225,6 +227,14 @@ void OGLRenderer::SetTextureRepeating(GLuint target, bool repeating)
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
+void OGLRenderer::SetShaderLight(const Light& l)
+{
+	glUniform3fv(glGetUniformLocation(currentShader->GetProgram(), "lightPos"), 1, (float*)&l.GetPosition());
+
+	glUniform4fv(glGetUniformLocation(currentShader->GetProgram(), "lightColour"), 1, (float*)&l.GetColour());
+
+	glUniform1f(glGetUniformLocation(currentShader->GetProgram(), "lightRadius"), l.GetRadius());
+}
 
 
 #ifdef OPENGL_DEBUGGING
