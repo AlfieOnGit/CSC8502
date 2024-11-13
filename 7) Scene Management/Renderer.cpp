@@ -61,14 +61,19 @@ void Renderer::UpdateScene(float dt)
 
 void Renderer::RenderScene()
 {
+    BuildNodeLists(root);
+    SortNodeLists();
+    
     glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
     BindShader(shader);
     UpdateShaderMatrices();
 
-    glUniform1i(glGetUniformLocation(shader->GetProgram(), "diffuseTex"), 1);
+    glUniform1i(glGetUniformLocation(shader->GetProgram(), "diffuseTex"), 0);
 
-    DrawNode(root);
+    DrawNodes();
+
+    ClearNodeLists();
 }
 
 void Renderer::BuildNodeLists(SceneNode* from)
@@ -94,6 +99,13 @@ void Renderer::SortNodeLists()
     std::sort(nodeList.begin(), nodeList.end(), SceneNode::CompareByCameraDistance);
 }
 
+void Renderer::ClearNodeLists()
+{
+    transparentNodelist.clear();
+    nodeList.clear();
+}
+
+
 void Renderer::DrawNodes()
 {
     for (const auto &i : nodeList) DrawNode(i);
@@ -117,6 +129,7 @@ void Renderer::DrawNode(SceneNode* n)
         glUniform1i(glGetUniformLocation(shader->GetProgram(), "useTexture"), texture);
         
         n->Draw(*this);
+        //std::cout << "Draw call should be made beneath!\n";
     }
 
     for (vector<SceneNode*>::const_iterator i = n->GetChildIteratorStart(); i != n->GetChildIteratorEnd(); ++i)
