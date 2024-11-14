@@ -1,25 +1,32 @@
-h:\desktop\graphics tutorials\x64\debug\nclgl.pdb
-h:\desktop\graphics tutorials\x64\debug\nclgl.idb
-h:\desktop\graphics tutorials\nclgl\x64\debug\glad.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\window.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\shader.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\quaternion.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\oglrenderer.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\mouse.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\meshmaterial.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\meshanimation.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\mesh.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\matrix4.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\matrix3.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\matrix2.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\keyboard.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\gametimer.obj
-h:\desktop\graphics tutorials\nclgl\x64\debug\computeshader.obj
-h:\desktop\graphics tutorials\x64\debug\nclgl.lib
-h:\desktop\graphics tutorials\nclgl\x64\debug\nclgl.tlog\cl.command.1.tlog
-h:\desktop\graphics tutorials\nclgl\x64\debug\nclgl.tlog\cl.items.tlog
-h:\desktop\graphics tutorials\nclgl\x64\debug\nclgl.tlog\cl.read.1.tlog
-h:\desktop\graphics tutorials\nclgl\x64\debug\nclgl.tlog\cl.write.1.tlog
-h:\desktop\graphics tutorials\nclgl\x64\debug\nclgl.tlog\lib-link.read.1.tlog
-h:\desktop\graphics tutorials\nclgl\x64\debug\nclgl.tlog\lib-link.write.1.tlog
-h:\desktop\graphics tutorials\nclgl\x64\debug\nclgl.tlog\lib.command.1.tlog
+c:\users\alfie\riderprojects\csc8502\x64\debug\nclgl.pdb
+c:\users\alfie\riderprojects\csc8502\x64\debug\nclgl.idb
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\glad.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\window.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\shader.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\quaternion.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\oglrenderer.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\mouse.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\meshmaterial.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\meshanimation.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\mesh.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\matrix4.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\matrix3.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\matrix2.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\keyboard.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\gametimer.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\computeshader.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\heightmap.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\frustum.obj
+c:\users\alfie\riderprojects\csc8502\x64\debug\nclgl.lib
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\camera.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\plane.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\scenenode.obj
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\vc143.idb
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\vc143.pdb
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\nclgl.tlog\cl.command.1.tlog
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\nclgl.tlog\cl.items.tlog
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\nclgl.tlog\cl.read.1.tlog
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\nclgl.tlog\cl.write.1.tlog
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\nclgl.tlog\lib-link.read.1.tlog
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\nclgl.tlog\lib-link.write.1.tlog
+c:\users\alfie\riderprojects\csc8502\nclgl\x64\debug\nclgl.tlog\lib.command.1.tlog
