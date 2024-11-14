@@ -13,10 +13,11 @@ _-_-_-_-_-_-_-""  ""
 
 */
 #include "OGLRenderer.h"
-#include "Shader.h"
+//#include "Shader.h"
 #include <algorithm>
 
 #include "Light.h"
+#include "Mesh.h"
 
 using std::string;
 

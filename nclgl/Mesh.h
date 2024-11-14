@@ -22,6 +22,8 @@ _-_-_-_-_-_-_-""  ""
 #include <vector>
 #include <string>
 
+//class OGLRenderer;
+
 //A handy enumerator, to determine which member of the bufferObject array
 //holds which data
 enum MeshBuffer {
@@ -91,6 +93,9 @@ public:
 
 protected:
 	void	BufferData();
+
+	void GenerateTangents();
+	Vector4 GenerateTangent(int a, int b, int c);
 
 	GLuint	arrayObject;
 

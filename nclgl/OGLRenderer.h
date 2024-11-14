@@ -34,7 +34,7 @@ _-_-_-_-_-_-_-""  ""
 #include "Matrix4.h"
 #include "Window.h"
 #include "Shader.h"
-#include "Mesh.h"
+//#include "Mesh.h"
 
 using std::vector;
 
@@ -44,6 +44,7 @@ extern const Matrix4 biasMatrix;
 
 class Shader;
 class Light;
+class Mesh;
 
 class OGLRenderer	{
 public:
