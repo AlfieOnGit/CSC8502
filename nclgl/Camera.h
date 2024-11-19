@@ -30,7 +30,7 @@ public:
     float GetYaw() const { return yaw; }
     void SetYaw(float y) { this->yaw = y; }
 
-    float GetPitch() const { return GetPitch(); }
+    float GetPitch() const { return pitch; }
     void SetPitch(float p) { this->pitch = p; }
 
 protected:
