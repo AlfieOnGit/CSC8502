@@ -21,3 +21,5 @@ protected:
     GLuint bumpMap;
     Camera **camera; // Pointer to the Renderer member variable (if camera is changed, doesn't need updating here)
 };
+
+#define TEXDIR "Assets/Moon/"

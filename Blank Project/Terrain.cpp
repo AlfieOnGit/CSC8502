@@ -4,15 +4,17 @@ Terrain::Terrain()
 {
     heightMap = new HeightMap(TEXTUREDIR"noise.png"); // TODO: Replace
     mesh = heightMap;
-    texture = SOIL_load_OGL_texture("Assets/Moon/Rock.jpg", SOIL_LOAD_AUTO,
+    texture = SOIL_load_OGL_texture(TEXDIR"Rock.jpg", SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS); // TODO: Make custom
-    bumpMap = SOIL_load_OGL_texture("Assets/Moon/RockNormal.jpg", SOIL_LOAD_AUTO,
+    bumpMap = SOIL_load_OGL_texture(TEXDIR"RockNormal.jpg", SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS); // TODO: Make custom
 }
 
 Terrain::~Terrain()
 {
     delete heightMap;
+    glDeleteTextures(1, &texture);
+    glDeleteTextures(1, &bumpMap);
 }
 
 void Terrain::Draw(OGLRenderer& r)
