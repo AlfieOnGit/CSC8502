@@ -35,6 +35,7 @@ Renderer::Renderer(Window &parent) : OGLRenderer(parent)	{
 	glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
+	
 	init = true;
 }
 

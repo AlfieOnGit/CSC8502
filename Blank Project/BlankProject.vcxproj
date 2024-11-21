@@ -147,9 +147,8 @@
     <ClInclude Include="Terrain.h" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Moon\Mesh\Asteroid_o.obj" />
-    <Content Include="Assets\Moon\Rock.jpg" />
-    <Content Include="Assets\Moon\RockNormal.jpg" />
+    <Content Include="Assets\Terrain\Rock.jpg" />
+    <Content Include="Assets\Terrain\RockNormal.jpg" />
     <Content Include="Assets\SkyBox\Texture\Back.png" />
     <Content Include="Assets\SkyBox\Texture\Down.png" />
     <Content Include="Assets\SkyBox\Texture\Front.png" />
