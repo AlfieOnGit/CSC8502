@@ -8,6 +8,8 @@ Terrain::Terrain()
         SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS); // TODO: Make custom
     bumpMap = SOIL_load_OGL_texture(TEXDIR"RockNormal.jpg", SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS); // TODO: Make custom
+
+    if (!texture || !bumpMap) throw std::runtime_error("Terrain textures failed to load!");
 }
 
 Terrain::~Terrain()

@@ -13,15 +13,12 @@ Renderer::Renderer(Window &parent) : OGLRenderer(parent)	{
 	// Terrain setup
 	auto *terrain = new Terrain();
 	terrain->SetShader(bumpShader);
+	SetTextureRepeating(terrain->GetTexture(), true);
 	scene = terrain;
 
 	// Skybox setup
 	skyBox = new SkyBox();
 	skyBox->SetShader(skyBoxShader);
-
-	// Textures check
-	if (!scene->GetTexture()) return;
-	SetTextureRepeating(scene->GetTexture(), true);
 
 	// Camera setup
 	camera = new Camera(0, 0, terrain->GetHeightMapSize() * Vector3(0.5, 2, 0.5));
@@ -60,15 +57,17 @@ void Renderer::RenderScene()	{
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	drawNode(skyBox);
-	drawNode(scene);
+	drawNode(scene, true);
 }
 
-void Renderer::drawNode(SceneNode* node)
+void Renderer::drawNode(SceneNode* node, bool drawChildren)
 {
 	if (node->GetMesh()) node->Draw(*this);
 
-	for (vector<SceneNode*>::const_iterator i = node->GetChildIteratorStart(); i != node->GetChildIteratorEnd(); ++i)
-		drawNode(*i);
+	if (drawChildren)
+		for (vector<SceneNode*>::const_iterator i = node->GetChildIteratorStart();
+			i != node->GetChildIteratorEnd(); ++i)
+				drawNode(*i);
 }
 
 

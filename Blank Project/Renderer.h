@@ -11,7 +11,7 @@ public:
 	 void RenderScene()				override;
 	 void UpdateScene(float dt)	    override;
 protected:
-	void drawNode(SceneNode *node);
+	void drawNode(SceneNode *node, bool drawChildren = false);
 	
 	Shader *sceneShader, *skyBoxShader, *bumpShader;
 	SceneNode *scene;
