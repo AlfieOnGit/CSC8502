@@ -29,6 +29,9 @@ public:
     void SetTexture(GLuint tex) { texture = tex; }
     GLuint GetTexture() const { return texture; }
 
+    void SetShader(Shader *shader) { this->shader = shader; }
+    Shader *GetShader() const { return shader; }
+
     static bool CompareByCameraDistance(SceneNode *a, SceneNode *b)
     {
         return a->distanceFromCamera < b->distanceFromCamera;
@@ -37,7 +40,7 @@ public:
     void AddChild(SceneNode* s);
 
     virtual void Update(float dt);
-    virtual void Draw(const OGLRenderer &r);
+    virtual void Draw(OGLRenderer &r);
 
     std::vector<SceneNode*>::const_iterator GetChildIteratorStart() { return children.begin(); }
     std::vector<SceneNode*>::const_iterator GetChildIteratorEnd() { return children.end(); }
@@ -52,5 +55,6 @@ protected:
     float distanceFromCamera;
     float boundingRadius;
     GLuint texture;
+    Shader *shader;
     std::vector<SceneNode*> children;
 };

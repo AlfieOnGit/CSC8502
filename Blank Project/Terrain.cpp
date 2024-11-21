@@ -1,0 +1,44 @@
+﻿#include "Terrain.h"
+
+Terrain::Terrain()
+{
+    heightMap = new HeightMap(TEXTUREDIR"noise.png"); // TODO: Replace
+    mesh = heightMap;
+    texture = SOIL_load_OGL_texture("Assets/Moon/Rock.jpg", SOIL_LOAD_AUTO,
+        SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS); // TODO: Make custom
+    bumpMap = SOIL_load_OGL_texture("Assets/Moon/RockNormal.jpg", SOIL_LOAD_AUTO,
+        SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS); // TODO: Make custom
+}
+
+Terrain::~Terrain()
+{
+    delete heightMap;
+}
+
+void Terrain::Draw(OGLRenderer& r)
+{
+    r.BindShader(shader);
+    
+    Matrix4 model = GetWorldTransform() * Matrix4::Scale(GetModelScale());
+    glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), "modelMatrix"),
+        1, false, model.values);
+
+    glUniform4fv(glGetUniformLocation(shader->GetProgram(), "colour"),
+        1, (float*)&GetColour());
+    
+    glUniform1i(glGetUniformLocation(shader->GetProgram(), "diffuseTex"), 0);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    
+    glUniform1i(glGetUniformLocation(shader->GetProgram(), "bumpTex"), 1);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, bumpMap);
+
+    glUniform3fv(glGetUniformLocation(shader->GetProgram(), "cameraPos"),
+        1, (float*)&(*camera)->GetPosition());
+
+    r.UpdateShaderMatrices();
+    
+    SceneNode::Draw(r);
+}
+

@@ -1,5 +1,4 @@
 #pragma once
-#include "Moon.h"
 #include "../NCLGL/OGLRenderer.h"
 #include "../nclgl/Mesh.h"
 #include "nclgl/Camera.h"
@@ -9,20 +8,20 @@
 class Renderer : public OGLRenderer	{
 public:
 	Renderer(Window &parent);
-	 ~Renderer(void);
+	 ~Renderer();
 	 void RenderScene()				override;
 	 void UpdateScene(float dt)	    override;
 protected:
 	void drawSkyBox();
 	void drawTerrain();
+	void drawScene();
 	void drawNode(SceneNode *node);
 	
-	Shader *basicShader, *skyBoxShader;
-	//HeightMap *terrain;
+	Shader *sceneShader, *skyBoxShader, *bumpShader;
+	SceneNode *scene;
 	Camera *camera;
 	GLuint terrainTex, skyBoxTex;
 	Mesh *quad; // TODO: To be replaced with sceneNode ideally? Point is we needed SOMETHING to call Draw on
-	Moon *moon;
 };
 
 #define SKYBOXTEXDIR "Assets/SkyBox/Texture/"

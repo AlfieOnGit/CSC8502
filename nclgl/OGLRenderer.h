@@ -58,7 +58,6 @@ public:
 
 	bool			HasInitialised() const;	
 	
-protected:
 	virtual void	Resize(int x, int y);	
 	void			UpdateShaderMatrices();
 	void			BindShader(Shader*s);
@@ -66,6 +65,7 @@ protected:
 
 	void			SetShaderLight(const Light &l);
 
+protected:
 	void StartDebugGroup(const std::string& s) {
 		glPushDebugGroup(GL_DEBUG_SOURCE_APPLICATION, 0, (GLsizei)s.length(), s.c_str());
 	}

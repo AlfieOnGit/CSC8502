@@ -137,15 +137,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BlankProject.cpp" />
-    <ClCompile Include="Moon.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Terrain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Moon.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Terrain.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Moon\Mesh\Asteroid_o.obj" />
+    <Content Include="Assets\Moon\Rock.jpg" />
+    <Content Include="Assets\Moon\RockNormal.jpg" />
     <Content Include="Assets\SkyBox\Texture\Back.png" />
     <Content Include="Assets\SkyBox\Texture\Down.png" />
     <Content Include="Assets\SkyBox\Texture\Front.png" />
