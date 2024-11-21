@@ -1,20 +1,19 @@
 #include "Renderer.h"
 
+#include "Scene/Scene.h"
 #include "Scene/Terrain.h"
 
 Renderer::Renderer(Window &parent) : OGLRenderer(parent)	{
 
 	// Terrain setup
-	auto *terrain = new Terrain();
-	SetTextureRepeating(terrain->GetTexture(), true);
-	scene = terrain;
+	scene = new Scene(*this, camera);
 
 	// Skybox setup
 	skyBox = new SkyBox();
 
 	// Camera setup
-	camera = new Camera(0, 0, terrain->GetHeightMapSize() * Vector3(0.5, 2, 0.5));
-	terrain->SetCamera(camera);
+	//camera = new Camera(0, 0, terrain->GetHeightMapSize() * Vector3(0.5, 2, 0.5));
+	camera = new Camera(0, 0, Vector3(1000, 1000, 1000));
 
 	projMatrix = Matrix4::Perspective(1.0f, 10000.0f, (float)width / (float)height, 45.0f);
 

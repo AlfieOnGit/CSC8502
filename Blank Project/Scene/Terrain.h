@@ -6,7 +6,7 @@
 class Terrain : public SceneNode
 {
 public:
-    Terrain();
+    Terrain(OGLRenderer &r);
     ~Terrain();
 
     void Draw(OGLRenderer& r) override;

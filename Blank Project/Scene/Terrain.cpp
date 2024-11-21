@@ -2,16 +2,18 @@
 
 #include "Blank Project/ShaderManager.h"
 
-Terrain::Terrain()
+Terrain::Terrain(OGLRenderer &r)
 {
     heightMap = new HeightMap(TEXTUREDIR"noise.png"); // TODO: Replace
     mesh = heightMap;
     texture = SOIL_load_OGL_texture(TEXDIR"Rock.jpg", SOIL_LOAD_AUTO,
-        SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS); // TODO: Make custom
+        SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
     bumpMap = SOIL_load_OGL_texture(TEXDIR"RockNormal.jpg", SOIL_LOAD_AUTO,
-        SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS); // TODO: Make custom
+        SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
 
     if (!texture || !bumpMap) throw std::runtime_error("Terrain textures failed to load!");
+
+    r.SetTextureRepeating(texture, true);
 
     shader = ShaderManager::GetBumpShader();
     if (!shader->LoadSuccess()) throw std::runtime_error("Terrain shader failed to load!");
