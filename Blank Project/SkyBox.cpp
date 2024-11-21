@@ -1,6 +1,6 @@
 ﻿#include "SkyBox.h"
 
-SkyBox::SkyBox()
+SkyBox::SkyBox() : SceneNode(Mesh::GenerateQuad())
 {
     texture = SOIL_load_OGL_cubemap(
         TEXDIR"Left.png", TEXDIR"Right.png", TEXDIR"Up.png",
@@ -8,8 +8,6 @@ SkyBox::SkyBox()
         SOIL_LOAD_RGB, SOIL_CREATE_NEW_ID, 0);
 
     if (!texture) throw std::runtime_error("SkyBox texture failed to load!");
-
-    mesh = Mesh::GenerateQuad();
 }
 
 SkyBox::~SkyBox()
