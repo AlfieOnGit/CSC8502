@@ -1,24 +1,16 @@
 #include "Renderer.h"
 
-#include "Terrain.h"
+#include "Scene/Terrain.h"
 
 Renderer::Renderer(Window &parent) : OGLRenderer(parent)	{
 
-	// Shader setup
-	sceneShader = new Shader("SceneVertex.glsl", "SceneFragment.glsl"); // TODO: Review all
-	skyBoxShader = new Shader("skyboxVertex.glsl", "skyboxFragment.glsl");
-	bumpShader = new Shader("BumpVertex.glsl", "BumpFragment.glsl");
-	if(!sceneShader->LoadSuccess() || !skyBoxShader->LoadSuccess() || !bumpShader->LoadSuccess()) return;
-
 	// Terrain setup
 	auto *terrain = new Terrain();
-	terrain->SetShader(bumpShader);
 	SetTextureRepeating(terrain->GetTexture(), true);
 	scene = terrain;
 
 	// Skybox setup
 	skyBox = new SkyBox();
-	skyBox->SetShader(skyBoxShader);
 
 	// Camera setup
 	camera = new Camera(0, 0, terrain->GetHeightMapSize() * Vector3(0.5, 2, 0.5));
@@ -37,9 +29,6 @@ Renderer::Renderer(Window &parent) : OGLRenderer(parent)	{
 }
 
 Renderer::~Renderer()	{
-	delete sceneShader;
-	delete skyBoxShader;
-	delete bumpShader;
 	delete scene;
 	delete skyBox;
 	delete camera;
@@ -69,5 +58,3 @@ void Renderer::drawNode(SceneNode* node, bool drawChildren)
 			i != node->GetChildIteratorEnd(); ++i)
 				drawNode(*i);
 }
-
-

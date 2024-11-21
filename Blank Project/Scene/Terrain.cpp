@@ -1,5 +1,7 @@
 ﻿#include "Terrain.h"
 
+#include "Blank Project/ShaderManager.h"
+
 Terrain::Terrain()
 {
     heightMap = new HeightMap(TEXTUREDIR"noise.png"); // TODO: Replace
@@ -10,6 +12,9 @@ Terrain::Terrain()
         SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS); // TODO: Make custom
 
     if (!texture || !bumpMap) throw std::runtime_error("Terrain textures failed to load!");
+
+    shader = ShaderManager::GetBumpShader();
+    if (!shader->LoadSuccess()) throw std::runtime_error("Terrain shader failed to load!");
 }
 
 Terrain::~Terrain()

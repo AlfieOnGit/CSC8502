@@ -1,5 +1,7 @@
 ﻿#include "SkyBox.h"
 
+#include "ShaderManager.h"
+
 SkyBox::SkyBox() : SceneNode(Mesh::GenerateQuad())
 {
     texture = SOIL_load_OGL_cubemap(
@@ -8,6 +10,9 @@ SkyBox::SkyBox() : SceneNode(Mesh::GenerateQuad())
         SOIL_LOAD_RGB, SOIL_CREATE_NEW_ID, 0);
 
     if (!texture) throw std::runtime_error("SkyBox texture failed to load!");
+
+    shader = ShaderManager::GetSkyBoxShader();
+    if (!shader->LoadSuccess()) throw std::runtime_error("SkyBox shader failed to load!");
 }
 
 SkyBox::~SkyBox()
