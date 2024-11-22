@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "nclgl/Camera.h"
 #include "nclgl/SceneNode.h"
-#include "nclgl/Light.h"
 
 class Water : public SceneNode
 {
@@ -14,10 +13,12 @@ public:
 
     void SetCamera(Camera *&camera) { this->camera = &camera; }
     Camera *GetCamera() const { return *camera; }
+
+    void Flip() override { isVisible = !isVisible; }
     
 protected:
+    bool isVisible = true;
     float waterRotate, waterCycle;
-    //Light *light;
     GLuint cubeMap;
     Camera **camera;
 };

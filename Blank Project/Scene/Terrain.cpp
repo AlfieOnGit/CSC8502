@@ -69,39 +69,6 @@ void Terrain::Draw(OGLRenderer& r)
     mesh->Draw();
 }
 
-
-// void Terrain::Draw(OGLRenderer& r)
-// {
-//     r.BindShader(shader);
-//     
-//     Matrix4 model = GetWorldTransform() * Matrix4::Scale(GetModelScale());
-//     glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), "modelMatrix"),
-//         1, false, model.values);
-//
-//     glUniform4fv(glGetUniformLocation(shader->GetProgram(), "colour"),
-//         1, (float*)&GetColour());
-//     
-//     glUniform1i(glGetUniformLocation(shader->GetProgram(), "diffuseTex"), 0);
-//     glActiveTexture(GL_TEXTURE0);
-//     glBindTexture(GL_TEXTURE_2D, texture);
-//     
-//     glUniform1i(glGetUniformLocation(shader->GetProgram(), "bumpTex"), 1);
-//     glActiveTexture(GL_TEXTURE1);
-//     glBindTexture(GL_TEXTURE_2D, *currentNormal);
-//
-//     glUniform3fv(glGetUniformLocation(shader->GetProgram(), "cameraPos"),
-//         1, (float*)&(*camera)->GetPosition());
-//
-//     Matrix4 identity = Matrix4();
-//     identity.ToIdentity();
-//     r.SetModelMatrix(identity);
-//     r.SetTextureMatrix(identity);
-//
-//     r.UpdateShaderMatrices();
-//     
-//     SceneNode::Draw(r);
-// }
-
 void Terrain::Flip()
 {
     bool isRocky = texture == rockyTex;

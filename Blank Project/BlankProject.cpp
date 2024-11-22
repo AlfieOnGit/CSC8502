@@ -22,7 +22,7 @@ int main()	{
 		renderer.SwapBuffers();
 		if (Window::GetKeyboard()->KeyTriggered(KEYBOARD_1)) renderer.SetFreeCamera(true);
 		if (Window::GetKeyboard()->KeyTriggered(KEYBOARD_2)) renderer.SetFreeCamera(false);
-		if (Window::GetKeyboard()->KeyTriggered(KEYBOARD_F)) renderer.FlipScene();
+		if (Window::GetKeyboard()->KeyTriggered(KEYBOARD_3)) renderer.FlipScene();
 		if (Window::GetKeyboard()->KeyDown(KEYBOARD_F5)) Shader::ReloadAllShaders();
 	}
 	return 0;

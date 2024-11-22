@@ -33,6 +33,8 @@ void Water::Update(float dt)
 
 void Water::Draw(OGLRenderer& r)
 {
+    if (!isVisible) return;
+    
     r.BindShader(shader);
 
     glUniform3fv(glGetUniformLocation(shader->GetProgram(), "cameraPos"), 1,
@@ -63,5 +65,3 @@ void Water::Draw(OGLRenderer& r)
 
     glEnable(GL_CULL_FACE);
 }
-
-
