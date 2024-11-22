@@ -15,7 +15,8 @@ public:
     {
         this->pitch = pitch;
         this->yaw = yaw;
-        this->position = position;
+        this->position, this->startPos = position;
+        std::cout << "Y = " << startPos.y << "!\n";
     }
 
     ~Camera() {}
@@ -33,8 +34,13 @@ public:
     float GetPitch() const { return pitch; }
     void SetPitch(float p) { this->pitch = p; }
 
+    bool IsFree() const { return isFree; }
+    void SetIsFree(bool isFree) { this->isFree = isFree; }
+
 protected:
+    bool isFree = false;
+    float count = 0.0f;
     float yaw;
     float pitch;
-    Vector3 position;
+    Vector3 position, startPos;
 };

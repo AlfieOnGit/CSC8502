@@ -14,7 +14,7 @@ Scene::Scene(OGLRenderer &r, Camera *&camera)
     AddChild(water);
 
     light = new Light(terrain->GetSize() * Vector3(0.0f, 1.5f, 1.0f),
-    Vector4(1, 0, 1, 1), terrain->GetSize().x * 5);
+    Vector4(1, 0.3, 1, 1), terrain->GetSize().x * 5);
 }
 
 Scene::~Scene()

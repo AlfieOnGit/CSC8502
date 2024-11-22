@@ -13,6 +13,7 @@ public:
 	void UpdateScene(float dt) override;
 
 	void FlipScene();
+	void SetFreeCamera(bool isFree) const { camera->SetIsFree(isFree); }
 	
 protected:
 	void drawNode(SceneNode *node, bool drawChildren = false);
