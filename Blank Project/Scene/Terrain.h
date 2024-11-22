@@ -2,7 +2,6 @@
 #include "nclgl/Camera.h"
 #include "nclgl/HeightMap.h"
 #include "nclgl/SceneNode.h"
-#include "nclgl/Light.h"
 
 class Terrain : public SceneNode
 {
@@ -25,7 +24,6 @@ protected:
     HeightMap *heightMap;
     GLuint rockyTex, rockyNormal, grassyTex, grassyNormal, *currentNormal;
     Camera **camera; // Pointer to the Renderer member variable (if camera is changed, doesn't need updating here)
-    Light *light;
 
     static Vector3 size;
 };

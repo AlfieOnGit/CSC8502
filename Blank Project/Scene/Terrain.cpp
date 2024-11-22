@@ -1,5 +1,6 @@
 ﻿#include "Terrain.h"
 
+#include "Scene.h"
 #include "Blank Project/Manager/ShaderManager.h"
 
 Vector3 Terrain::size = Vector3(0, 0, 0);
@@ -32,9 +33,6 @@ Terrain::Terrain(OGLRenderer &r)
     if (!shader->LoadSuccess()) throw std::runtime_error("Terrain shader failed to load!");
 
     this->size = heightMap->GetHeightMapSize();
-
-    light = new Light(size * Vector3(0.5f, 1.5f, 0.5f),
-        Vector4(1, 1, 1, 1), size.x);
 }
 
 Terrain::~Terrain()
@@ -49,7 +47,7 @@ Terrain::~Terrain()
 void Terrain::Draw(OGLRenderer& r)
 {
     r.BindShader(shader);
-    r.SetShaderLight(*light);
+    r.SetShaderLight(*static_cast<Scene*>(parent)->GetLight());
     glUniform3fv(glGetUniformLocation(shader->GetProgram(), "cameraPos"),
         1, (float*)&(*camera)->GetPosition());
 

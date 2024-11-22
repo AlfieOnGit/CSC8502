@@ -1,6 +1,5 @@
 ﻿#include "Scene.h"
 
-#include "Tree.h"
 #include "Water.h"
 
 Scene::Scene(OGLRenderer &r, Camera *&camera)
@@ -14,8 +13,8 @@ Scene::Scene(OGLRenderer &r, Camera *&camera)
     water->SetCamera(camera);
     AddChild(water);
 
-    //SceneNode *tree = new Tree();
-    //AddChild(tree);
+    light = new Light(terrain->GetSize() * Vector3(0.0f, 1.5f, 1.0f),
+    Vector4(1, 0, 1, 1), terrain->GetSize().x * 5);
 }
 
 Scene::~Scene()

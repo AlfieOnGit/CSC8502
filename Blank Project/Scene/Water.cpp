@@ -14,9 +14,6 @@ Water::Water(OGLRenderer &r) : SceneNode(Mesh::GenerateQuad())
     shader = ShaderManager::GetReflectShader();
     if (!shader->LoadSuccess()) throw std::runtime_error("Water shader failed to load!");
 
-    //light = new Light(Terrain::GetSize() * Vector3(0.5f, 1.5f, 0.5f), Vector4(1, 1, 1, 1),
-    //    Terrain::GetSize().x);
-
     r.SetTextureRepeating(texture, true);
 
     waterCycle = 0.0f;
@@ -53,7 +50,7 @@ void Water::Draw(OGLRenderer& r)
 
     Vector3 hSize = Terrain::GetSize();
 
-    r.SetModelMatrix(Matrix4::Translation(hSize * 0.5f)
+    r.SetModelMatrix(Matrix4::Translation(hSize * 0.4f)
         * Matrix4::Scale(hSize * 0.5f)
         * Matrix4::Rotation(90, Vector3(1, 0, 0)));
 
