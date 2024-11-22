@@ -3,7 +3,6 @@
 #include "../NCLGL/OGLRenderer.h"
 #include "nclgl/Camera.h"
 #include "nclgl/SceneNode.h"
-#include "../nclgl/Light.h"
 
 class Renderer : public OGLRenderer	{
 public:
@@ -16,19 +15,9 @@ public:
 	void FlipScene();
 	
 protected:
-	void GenerateScreenTexture(GLuint &into, bool depth = false);
-	void DrawMeshes();
-	void DrawPointLights();
-	void CombineBuffers();
-	
 	void drawNode(SceneNode *node, bool drawChildren = false);
-
-	GLuint bufferFBO, bufferColourTex, bufferNormalTex, bufferDepthTex;
-	GLuint pointLightFBO, lightDiffuseTex, lightSpecularTex;
 
 	SceneNode *scene;
 	SkyBox *skyBox;
 	Camera *camera;
-	Light *pointLights;
-	Mesh *sphere, *quad;
 };

@@ -65,6 +65,12 @@ public:
 
 	void			SetShaderLight(const Light &l);
 
+	void SetProjMatrix(Matrix4 projMatrix) { this->projMatrix = projMatrix; }
+	void SetModelMatrix(Matrix4 modelMatrix) { this->modelMatrix = modelMatrix; }
+	void SetViewMatrix(Matrix4 viewMatrix) { this->viewMatrix = viewMatrix; }
+	void SetTextureMatrix(Matrix4 textureMatrix) { this->textureMatrix = textureMatrix; }
+	void SetShadowMatrix(Matrix4 shadowMatrix) { this->shadowMatrix = shadowMatrix; }
+
 protected:
 	void StartDebugGroup(const std::string& s) {
 		glPushDebugGroup(GL_DEBUG_SOURCE_APPLICATION, 0, (GLsizei)s.length(), s.c_str());

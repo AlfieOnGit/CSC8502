@@ -1,17 +1,21 @@
 ﻿#include "Terrain.h"
 
-#include "Blank Project/ShaderManager.h"
+#include "Blank Project/Manager/ShaderManager.h"
+
+Vector3 Terrain::size = Vector3(0, 0, 0);
+
 
 Terrain::Terrain(OGLRenderer &r)
 {
-    mesh = new HeightMap(TEXTUREDIR"noise.png"); // TODO: Replace
-    rockyTex = SOIL_load_OGL_texture(TEXDIR"Rock.jpg", SOIL_LOAD_AUTO,
+    heightMap = new HeightMap(TEXTUREDIR"noise.png"); // TODO: Replace
+    mesh = heightMap;
+    rockyTex = SOIL_load_OGL_texture(SKYBOXDIR"Rock.jpg", SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
-    rockyNormal = SOIL_load_OGL_texture(TEXDIR"RockNormal.jpg", SOIL_LOAD_AUTO,
+    rockyNormal = SOIL_load_OGL_texture(SKYBOXDIR"RockNormal.jpg", SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
-    grassyTex = SOIL_load_OGL_texture(TEXDIR"Grassy.jpg", SOIL_LOAD_AUTO,
+    grassyTex = SOIL_load_OGL_texture(SKYBOXDIR"Grassy.jpg", SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
-    grassyNormal = SOIL_load_OGL_texture(TEXDIR"GrassyNormal.jpg", SOIL_LOAD_AUTO,
+    grassyNormal = SOIL_load_OGL_texture(SKYBOXDIR"GrassyNormal.jpg", SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
 
     if (!rockyTex || !rockyNormal || !grassyTex || !grassyNormal)
@@ -24,8 +28,13 @@ Terrain::Terrain(OGLRenderer &r)
     r.SetTextureRepeating(grassyTex, true);
     r.SetTextureRepeating(grassyNormal, true);
 
-    shader = ShaderManager::GetSceneShader();
+    shader = ShaderManager::GetLightShader();
     if (!shader->LoadSuccess()) throw std::runtime_error("Terrain shader failed to load!");
+
+    this->size = heightMap->GetHeightMapSize();
+
+    light = new Light(size * Vector3(0.5f, 1.5f, 0.5f),
+        Vector4(1, 1, 1, 1), size.x);
 }
 
 Terrain::~Terrain()
@@ -40,29 +49,60 @@ Terrain::~Terrain()
 void Terrain::Draw(OGLRenderer& r)
 {
     r.BindShader(shader);
-    
-    Matrix4 model = GetWorldTransform() * Matrix4::Scale(GetModelScale());
-    glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), "modelMatrix"),
-        1, false, model.values);
+    r.SetShaderLight(*light);
+    glUniform3fv(glGetUniformLocation(shader->GetProgram(), "cameraPos"),
+        1, (float*)&(*camera)->GetPosition());
 
-    glUniform4fv(glGetUniformLocation(shader->GetProgram(), "colour"),
-        1, (float*)&GetColour());
-    
     glUniform1i(glGetUniformLocation(shader->GetProgram(), "diffuseTex"), 0);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture);
-    
+
     glUniform1i(glGetUniformLocation(shader->GetProgram(), "bumpTex"), 1);
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, *currentNormal);
 
-    glUniform3fv(glGetUniformLocation(shader->GetProgram(), "cameraPos"),
-        1, (float*)&(*camera)->GetPosition());
+    Matrix4 identity = Matrix4();
+    identity.ToIdentity();
+    r.SetModelMatrix(identity);
+    r.SetTextureMatrix(identity);
 
     r.UpdateShaderMatrices();
-    
-    SceneNode::Draw(r);
+
+    mesh->Draw();
 }
+
+
+// void Terrain::Draw(OGLRenderer& r)
+// {
+//     r.BindShader(shader);
+//     
+//     Matrix4 model = GetWorldTransform() * Matrix4::Scale(GetModelScale());
+//     glUniformMatrix4fv(glGetUniformLocation(shader->GetProgram(), "modelMatrix"),
+//         1, false, model.values);
+//
+//     glUniform4fv(glGetUniformLocation(shader->GetProgram(), "colour"),
+//         1, (float*)&GetColour());
+//     
+//     glUniform1i(glGetUniformLocation(shader->GetProgram(), "diffuseTex"), 0);
+//     glActiveTexture(GL_TEXTURE0);
+//     glBindTexture(GL_TEXTURE_2D, texture);
+//     
+//     glUniform1i(glGetUniformLocation(shader->GetProgram(), "bumpTex"), 1);
+//     glActiveTexture(GL_TEXTURE1);
+//     glBindTexture(GL_TEXTURE_2D, *currentNormal);
+//
+//     glUniform3fv(glGetUniformLocation(shader->GetProgram(), "cameraPos"),
+//         1, (float*)&(*camera)->GetPosition());
+//
+//     Matrix4 identity = Matrix4();
+//     identity.ToIdentity();
+//     r.SetModelMatrix(identity);
+//     r.SetTextureMatrix(identity);
+//
+//     r.UpdateShaderMatrices();
+//     
+//     SceneNode::Draw(r);
+// }
 
 void Terrain::Flip()
 {

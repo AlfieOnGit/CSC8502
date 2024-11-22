@@ -1,14 +1,11 @@
 ﻿#include "SkyBox.h"
 
-#include "ShaderManager.h"
+#include "Manager/ShaderManager.h"
+#include "Manager/TextureManager.h"
 
 SkyBox::SkyBox() : SceneNode(Mesh::GenerateQuad())
 {
-    texture = SOIL_load_OGL_cubemap(
-        TEXDIR"Left.png", TEXDIR"Right.png", TEXDIR"Up.png",
-        TEXDIR"Down.png", TEXDIR"Front.png", TEXDIR"Back.png",
-        SOIL_LOAD_RGB, SOIL_CREATE_NEW_ID, 0);
-
+    texture = TextureManager::GetSkyBoxTexture();
     if (!texture) throw std::runtime_error("SkyBox texture failed to load!");
 
     shader = ShaderManager::GetSkyBoxShader();
@@ -26,8 +23,8 @@ void SkyBox::Draw(OGLRenderer& r)
 	
     r.BindShader(shader);
     r.UpdateShaderMatrices();
-    glUniform1i(glGetUniformLocation(shader->GetProgram(), "cubeTex"), 0);
-    glBindTexture(GL_TEXTURE_CUBE_MAP, texture);
+    //glUniform1i(glGetUniformLocation(shader->GetProgram(), "cubeTex"), 0);
+    //glBindTexture(GL_TEXTURE_CUBE_MAP, texture);
 
     SceneNode::Draw(r);
 

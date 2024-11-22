@@ -10,4 +10,4 @@ public:
     void Draw(OGLRenderer& r) override;
 };
 
-#define TEXDIR "Assets/SkyBox/Texture/"
+#define SKYBOXDIR "Assets/SkyBox/Texture/"
