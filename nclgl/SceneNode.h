@@ -42,6 +42,8 @@ public:
     virtual void Update(float dt);
     virtual void Draw(OGLRenderer &r);
 
+    virtual void Flip();
+
     std::vector<SceneNode*>::const_iterator GetChildIteratorStart() { return children.begin(); }
     std::vector<SceneNode*>::const_iterator GetChildIteratorEnd() { return children.end(); }
 

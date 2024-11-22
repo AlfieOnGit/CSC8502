@@ -15,10 +15,12 @@ public:
 
     void SetCamera(Camera *&camera) { this->camera = &camera; }
     Camera *GetCamera() const { return *camera; }
+
+    void Flip() override;
     
 protected:
     HeightMap *heightMap;
-    GLuint bumpMap;
+    GLuint rockyTex, rockyNormal, grassyTex, grassyNormal, *currentNormal;
     Camera **camera; // Pointer to the Renderer member variable (if camera is changed, doesn't need updating here)
 };
 

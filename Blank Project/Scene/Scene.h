@@ -8,6 +8,9 @@ public:
     Scene(OGLRenderer &r, Camera *&camera);
     ~Scene();
 
+    void SetIsRocky(bool isRocky);
+
 protected:
+    bool isRocky = true;
     Terrain *terrain;
 };

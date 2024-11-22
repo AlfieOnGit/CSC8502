@@ -20,6 +20,10 @@ int main()	{
 		renderer.UpdateScene(w.GetTimer()->GetTimeDeltaSeconds());
 		renderer.RenderScene();
 		renderer.SwapBuffers();
+		if (Window::GetKeyboard()->KeyTriggered(KEYBOARD_F))
+		{
+			renderer.FlipScene();
+		}
 		if (Window::GetKeyboard()->KeyDown(KEYBOARD_F5)) {
 			Shader::ReloadAllShaders();
 		}

@@ -34,3 +34,9 @@ void SceneNode::Update(float dt)
 
     for (vector<SceneNode*>::iterator i = children.begin(); i != children.end(); i++) (*i)->Update(dt);
 }
+
+void SceneNode::Flip()
+{
+    for (vector<SceneNode*>::iterator i = children.begin(); i != children.end(); i++) (*i)->Flip();
+}
+

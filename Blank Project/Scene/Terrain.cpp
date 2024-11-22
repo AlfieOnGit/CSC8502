@@ -4,18 +4,27 @@
 
 Terrain::Terrain(OGLRenderer &r)
 {
-    heightMap = new HeightMap(TEXTUREDIR"noise.png"); // TODO: Replace
-    mesh = heightMap;
-    texture = SOIL_load_OGL_texture(TEXDIR"Rock.jpg", SOIL_LOAD_AUTO,
+    mesh = new HeightMap(TEXTUREDIR"noise.png"); // TODO: Replace
+    rockyTex = SOIL_load_OGL_texture(TEXDIR"Rock.jpg", SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
-    bumpMap = SOIL_load_OGL_texture(TEXDIR"RockNormal.jpg", SOIL_LOAD_AUTO,
+    rockyNormal = SOIL_load_OGL_texture(TEXDIR"RockNormal.jpg", SOIL_LOAD_AUTO,
+        SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
+    grassyTex = SOIL_load_OGL_texture(TEXDIR"Grassy.jpg", SOIL_LOAD_AUTO,
+        SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
+    grassyNormal = SOIL_load_OGL_texture(TEXDIR"GrassyNormal.jpg", SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
 
-    if (!texture || !bumpMap) throw std::runtime_error("Terrain textures failed to load!");
+    if (!rockyTex || !rockyNormal || !grassyTex || !grassyNormal)
+        throw std::runtime_error("Terrain textures failed to load!");
 
+    texture = rockyTex;
+    currentNormal = &rockyNormal;
     r.SetTextureRepeating(texture, true);
+    r.SetTextureRepeating(rockyNormal, true);
+    r.SetTextureRepeating(grassyTex, true);
+    r.SetTextureRepeating(grassyNormal, true);
 
-    shader = ShaderManager::GetBumpShader();
+    shader = ShaderManager::GetSceneShader();
     if (!shader->LoadSuccess()) throw std::runtime_error("Terrain shader failed to load!");
 }
 
@@ -23,7 +32,9 @@ Terrain::~Terrain()
 {
     delete heightMap;
     glDeleteTextures(1, &texture);
-    glDeleteTextures(1, &bumpMap);
+    glDeleteTextures(1, &rockyNormal);
+    glDeleteTextures(1, &grassyTex);
+    glDeleteTextures(1, &grassyNormal);
 }
 
 void Terrain::Draw(OGLRenderer& r)
@@ -43,7 +54,7 @@ void Terrain::Draw(OGLRenderer& r)
     
     glUniform1i(glGetUniformLocation(shader->GetProgram(), "bumpTex"), 1);
     glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, bumpMap);
+    glBindTexture(GL_TEXTURE_2D, *currentNormal);
 
     glUniform3fv(glGetUniformLocation(shader->GetProgram(), "cameraPos"),
         1, (float*)&(*camera)->GetPosition());
@@ -53,3 +64,9 @@ void Terrain::Draw(OGLRenderer& r)
     SceneNode::Draw(r);
 }
 
+void Terrain::Flip()
+{
+    bool isRocky = texture == rockyTex;
+    texture = isRocky ? grassyTex : rockyTex;
+    currentNormal = isRocky ? &grassyNormal : &rockyTex;
+}

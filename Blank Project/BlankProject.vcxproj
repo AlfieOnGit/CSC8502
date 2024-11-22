@@ -138,6 +138,7 @@
   <ItemGroup>
     <ClCompile Include="BlankProject.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Scene\Orb.cpp" />
     <ClCompile Include="Scene\Scene.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -289,12 +290,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Scene\Orb.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\Terrain.h" />
     <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="SkyBox.h" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Terrain\Grassy.jpg" />
+    <Content Include="Assets\Terrain\GrassyNormal.jpg" />
     <Content Include="Assets\Terrain\Rock.jpg" />
     <Content Include="Assets\Terrain\RockNormal.jpg" />
     <Content Include="Assets\SkyBox\Texture\Back.png" />
