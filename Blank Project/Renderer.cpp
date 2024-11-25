@@ -17,7 +17,7 @@ Renderer::Renderer(Window &parent) : OGLRenderer(parent)	{
 	// Camera setup
 	camera = new Camera(0, 0, Terrain::GetSize() * Vector3(0.5, 2, 0.5));
 
-	projMatrix = Matrix4::Perspective(1.0f, 15000.0f, (float)width / (float)height, 45.0f); // TODO: Remove maybe?
+	projMatrix = Matrix4::Perspective(1.0f, 15000.0f, (float)width / (float)height, 45.0f);
 	
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);

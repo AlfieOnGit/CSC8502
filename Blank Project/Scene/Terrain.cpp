@@ -8,7 +8,7 @@ Vector3 Terrain::size = Vector3(0, 0, 0);
 
 Terrain::Terrain(OGLRenderer &r)
 {
-    heightMap = new HeightMap(TEXTUREDIR"noise.png"); // TODO: Replace
+    heightMap = new HeightMap(TEXTUREDIR"noise.png");
     mesh = heightMap;
     rockyTex = SOIL_load_OGL_texture(SKYBOXDIR"Rock.jpg", SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS);
