@@ -212,7 +212,6 @@
     </ClCompile>
     <ClCompile Include="Manager\TextureManager.cpp" />
     <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="Scene\Orb.cpp" />
     <ClCompile Include="Scene\Scene.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -367,7 +366,6 @@
     <ClInclude Include="Manager\ShaderManager.h" />
     <ClInclude Include="Manager\TextureManager.h" />
     <ClInclude Include="Renderer.h" />
-    <ClInclude Include="Scene\Orb.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\Terrain.h" />
     <ClInclude Include="Scene\Tree.h" />
